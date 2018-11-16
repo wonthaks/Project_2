@@ -169,6 +169,12 @@ calculateInteger:
 	div $t5, $t0		#divide exponent by 28 ($t5 / $t0)
 	mflo $t5	#then, move contents of $LO (quotient) into $t5
 	jal calculateOutput	#then, jump back to calculateOutput loop
+
+calculateOutput:
+	addi $s1, $s1, 1		#increment stack pointer in $s1 
+	lb $t2, 0($s1)			#load byte from stack (character) into $t2
+	li $t0, 32			#load 32 into $t0 to use to compare for space character
+	beq $t2, $t0, calculateOutput	#if $t2 contains a space character, go back to beginning of this loop
 	
 exit:
     li $v0, 10		#to end the script
