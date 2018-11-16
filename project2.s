@@ -165,6 +165,10 @@ calculateInteger:
 	mult $t2, $t5		#multiply value in $t2 by exponent
 	mflo $t0	#add contents of special register $LO to $t0 
 	add $t6, $t6, $t0	#add value of $t0 to sum register ($t6)
+	li $t0, 28			#load 28 into $t0 to use to divide exponent
+	div $t5, $t0		#divide exponent by 28 ($t5 / $t0)
+	mflo $t5	#then, move contents of $LO (quotient) into $t5
+	jal calculateOutput	#then, jump back to calculateOutput loop
 	
 exit:
     li $v0, 10		#to end the script
