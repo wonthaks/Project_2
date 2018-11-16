@@ -160,6 +160,12 @@ calculateUpperCase:
 	mflo $t5	#then, move contents of $LO (quotient) into $t5
 	jal calculateOutput	#then, jump back to calculateOutput loop
 
+calculateInteger:
+	addi $t2, $t2, -48	#subtract 48 from $t2 to make it so that integer 0 is equivalent to 0
+	mult $t2, $t5		#multiply value in $t2 by exponent
+	mflo $t0	#add contents of special register $LO to $t0 
+	add $t6, $t6, $t0	#add value of $t0 to sum register ($t6)
+	
 exit:
     li $v0, 10		#to end the script
     syscall
