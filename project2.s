@@ -123,6 +123,12 @@ handleInvalid:
 	syscall					#print out string message
 	jal exit				#jump to exit
 
+handleEmpty:
+	li $v0, 4				#load 4 into $v0 to print out string
+	la $a0, empty			#load address of string message into $a0
+	syscall					#print out string message
+	jal exit				#jump to exit
+
 exit:
     li $v0, 10		#to end the script
     syscall
