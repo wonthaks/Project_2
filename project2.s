@@ -139,6 +139,12 @@ calculateExponent:
 	li $t0, 1					#load 0 into $t0 to use to compare with $t8 (length holder register)
 	bgt $t8, $t0, calculateExponent	#if $t8 is still greater than 0, loop again to calculate max exponent
 	jal calculateOutput
+
+calculateLowerCase:
+	addi $t2, $t2, -87	#subtract 87 from $t2 to make it so that lowercase a is equivalent to 10
+	mult $t2, $t5		#multiply value in $t2 by exponent
+	mflo $t0	#add contents of special register $LO to $t0 
+	add $t6, $t6, $t0	#add value of $t0 to sum register ($t6)
 	
 exit:
     li $v0, 10		#to end the script
