@@ -102,6 +102,10 @@ incrementLength:
 	li $t7, 1				#load 1 into $t7 to keep track of whether string has started or not (to check for space character validity)
 	li $t0, 0				#load 0 into $t0 to check whether spaces were found between characters
 	bgt $s2, $t0, invalidSpace	#if invalid spaces were found, branch to invalidSpace
+incrementLengthPart2:
+	add $t8, $t8, $s2		#add invalid lengths to length of string
+	li $s2, 0				#reinitialize invalid space lengths to 0 again
+	jal loopOne				#go back to loopOne
 	
 exit:
     li $v0, 10		#to end the script
