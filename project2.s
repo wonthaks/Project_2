@@ -42,8 +42,12 @@ loopOne:
 	
 	beq $t2, $t9, checkLength	#if the char is LineFeed, then input has ended (so branch to checkLength)
 	addi $t4, $t4, 1	#else, increment the invalid count
-	li $t7, 1			#indicate string has started
-	
+	li $t7, 1			#indicate string has started	
+	add $t8, $t8, $s2	#add invalid space length to total length
+	li $s2, 0			#reload 0 into invalid space length
+	li $s4, 1			#load 1 to $s4 to keep track of invalidity
+	jal loopOne			#and loop again
+
 exit:
     li $v0, 10		#to end the script
     syscall
