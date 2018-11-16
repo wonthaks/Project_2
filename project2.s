@@ -37,6 +37,13 @@ loopOne:
 	li $t0, 48			#if again previous statement did not execute, load 48 into $t0
 	bge $t2, $t0, checkValidInteger	#branch to checkValidInteger if  $t2 >= $t0
 	
+	li $t0, 32			#load 32 into $t0 to use to compare for space character
+	beq $t2, $t0, checkSpaceBetween	#if $t2 contains a space character, branch to check whether it is okay to skip or not
+	
+	beq $t2, $t9, checkLength	#if the char is LineFeed, then input has ended (so branch to checkLength)
+	addi $t4, $t4, 1	#else, increment the invalid count
+	li $t7, 1			#indicate string has started
+	
 exit:
     li $v0, 10		#to end the script
     syscall
