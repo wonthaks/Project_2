@@ -97,6 +97,12 @@ checkValidInteger:
 	li $s4, 1			#keep track of invalidity
 	jal loopOne			#then, go back to loop
 
+incrementLength:
+	addi $t8, $t8, 1		#increment length by 1
+	li $t7, 1				#load 1 into $t7 to keep track of whether string has started or not (to check for space character validity)
+	li $t0, 0				#load 0 into $t0 to check whether spaces were found between characters
+	bgt $s2, $t0, invalidSpace	#if invalid spaces were found, branch to invalidSpace
+	
 exit:
     li $v0, 10		#to end the script
     syscall
