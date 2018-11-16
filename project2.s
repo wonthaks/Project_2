@@ -134,6 +134,11 @@ calculateExponent:
 	beq $t8, $t0, calculateOutput		#if length of string is one, jump to calculateOutput
 	li $t0, 28				#load base-N number to $t0 to calculate exponent (in this case base-28)
 	mult $t5, $t0			#multiply current exponent ($t5) with $t0 to get next
+	mflo $t5	#move whatever is stored now in special register $LO into $t5 (exponent holder register)
+	addi $t8, $t8, -1			#decrement value in $t8
+	li $t0, 1					#load 0 into $t0 to use to compare with $t8 (length holder register)
+	bgt $t8, $t0, calculateExponent	#if $t8 is still greater than 0, loop again to calculate max exponent
+	jal calculateOutput
 	
 exit:
     li $v0, 10		#to end the script
