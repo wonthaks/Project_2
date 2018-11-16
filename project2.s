@@ -57,6 +57,11 @@ incrementSpaceInvalid:
 	addi $s2, $s2, 1	#add 1 to invalid space length tracker
 	li $t3, 1			#load 1 into $t3 to keep track of whether the space was between characters
 	jal loopOne			#jump back to main loop
+
+checkLength:
+	add $t8, $t8, $t4	#add invalid length to real length
+	li $t0, 4			#load 4 into $t0 to check for length of string
+	bgt $t8, $t0, handleLonger		#if length is longer than 4, branch to handleLonger
 	
 exit:
     li $v0, 10		#to end the script
