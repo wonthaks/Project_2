@@ -110,6 +110,12 @@ incrementLengthPart2:
 invalidSpace:
 	li $s3, 1				#load 1 into $s3 to keep track of invalidity due to space
 	jal incrementLengthPart2		#jump back to incrementLengthPart2
+
+handleLonger:
+	li $v0, 4				#load 4 into $v0 to print out string
+	la $a0, long			#load address of string message into $a0
+	syscall					#print out string message
+	jal exit				#jump to exit
 	
 exit:
     li $v0, 10		#to end the script
