@@ -66,7 +66,10 @@ checkLength:
 	beq $t8, $t0, handleEmpty		#if string is empty, branch to handleEmpty
 	li $t0, 1			#load 1 into $t0 to check for invalidity
 	beq $s4, $t0, handleInvalid		#if string is invalid, jump to handleInvalid
-	
+	li $t0, 1			#load 1 into $t0 to check if spaces were in between characters (since length was less than 4 and more than 0)
+	beq $s3, $t0, handleInvalid		#if spaces were between characters and length is less than 4, branch to handleInvalid
+	jal calculateExponent			#else, jump to calculateExponent (which redirects to calculateOutput)
+
 exit:
     li $v0, 10		#to end the script
     syscall
