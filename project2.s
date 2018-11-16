@@ -180,7 +180,11 @@ calculateOutput:
 	bge $t2, $t0, calculateLowerCase	#branch to calculateLowerCase if  $t2 > $t0
 	li $t0, 65			#if previous statement did not execute, load 65 into $t0
 	bge $t2, $t0, calculateUpperCase	#branch to calculateUpperCase if  $t2 > $t0
+	li $t0, 48			#if again previous statement did not execute, load 48 into $t0
+	bge $t2, $t0, calculateInteger	#branch to calculateInteger if  $t2 > $t0
 	
+	beq $t2, $t9, outputSum		#if value in $t2 is 10, it is LineFeed so we can now branch to outputSum
+
 exit:
     li $v0, 10		#to end the script
     syscall
