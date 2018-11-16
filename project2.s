@@ -31,6 +31,11 @@ loopOne:
 	li $t0, 97			#load 97 into $t7 to use to compare for valid character (uppercase)
 	bge $t2, $t0, checkValidLower	#branch to checkValidLower if  $t2 >= $t0
 	
+	li $t0, 65			#if previous statement did not execute, load 65 into $t0
+	bge $t2, $t0, checkValidUpper	#branch to checkValidUpper if  $t2 >= $t0
+	
+	li $t0, 48			#if again previous statement did not execute, load 48 into $t0
+	bge $t2, $t0, checkValidInteger	#branch to checkValidInteger if  $t2 >= $t0
 	
 exit:
     li $v0, 10		#to end the script
