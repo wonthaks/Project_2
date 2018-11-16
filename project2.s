@@ -106,6 +106,10 @@ incrementLengthPart2:
 	add $t8, $t8, $s2		#add invalid lengths to length of string
 	li $s2, 0				#reinitialize invalid space lengths to 0 again
 	jal loopOne				#go back to loopOne
+
+invalidSpace:
+	li $s3, 1				#load 1 into $s3 to keep track of invalidity due to space
+	jal incrementLengthPart2		#jump back to incrementLengthPart2
 	
 exit:
     li $v0, 10		#to end the script
