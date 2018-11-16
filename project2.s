@@ -20,7 +20,10 @@ main:
 	li $t3, 0			#register to track whether spaces were found between characters
 	li $s2, 0			#register to track space invalids
 	li $s3, 0			#register to track whether space was found between characters
-	
+	li $s4, 0			#register to track whether invalids were found
+	addi $s0, $s0, -1	#decrement stack pointer by 1 to account for loop after
+	add $s1, $s0, $zero	#copy contents from $s0 into $s1 to use to calculate output later on
+
 	
    add $t0, $a0, $zero	#copy contents of $a0 to $t0
    li $t1, 1			#load 1 into $t1 to use as program counter
