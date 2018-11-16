@@ -185,6 +185,12 @@ calculateOutput:
 	
 	beq $t2, $t9, outputSum		#if value in $t2 is 10, it is LineFeed so we can now branch to outputSum
 
+outputSum:
+	li $v0, 1		#to print out integer
+	add $a0, $t6, $zero		#move contents of sum register to $a0 to print sum after
+	syscall
+	jal exit		#jump to exit
+	
 exit:
     li $v0, 10		#to end the script
     syscall
