@@ -15,6 +15,11 @@ main:
 	li $t8, 0			#load 0 to initialize length of string
 	li $t7, 0			#load 0 to use to check whether a space character is between the input string or not (0 indicates string has not started yet, while > 0 means the string has)
 	li $t6, 0			#$t6 will be used to calculate the output sum after
+	li $t5, 1			#$t5 currently holds the max exponent to use in calculation
+	li $t4, 0			#register used to count invalids (and space if string started)
+	li $t3, 0			#register to track whether spaces were found between characters
+	li $s2, 0			#register to track space invalids
+	li $s3, 0			#register to track whether space was found between characters
 	
 	
    add $t0, $a0, $zero	#copy contents of $a0 to $t0
