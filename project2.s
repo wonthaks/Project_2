@@ -23,14 +23,8 @@ main:
 	li $s4, 0			#register to track whether invalids were found
 	addi $s0, $s0, -1	#decrement stack pointer by 1 to account for loop after
 	add $s1, $s0, $zero	#copy contents from $s0 into $s1 to use to calculate output later on
-
-	
-   add $t0, $a0, $zero	#copy contents of $a0 to $t0
-   li $t1, 1			#load 1 into $t1 to use as program counter
-   li $t8, 5			#load 5 into $t8 to use to check whether loop has eded
-   li $t7, 10			#load 10 into $t7 to use to check for Line Feed character
    
 exit:
-   li $v0, 10		#to end the script
-   syscall
+    li $v0, 10		#to end the script
+    syscall
    
