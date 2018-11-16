@@ -84,7 +84,10 @@ checkValidUpper:
 	bgt $t8, $t0, handleLonger		#if length is longer than 4, branch to handleLonger
 	li $t0, 82			#load 82 into $t0 to check for valid uppercase letter
 	ble $t2, $t0, incrementLength	#if char is within range, branch to incrementLength
-	
+	addi $t4, $t4, 1	#else, increment invalid count
+	li $s4, 1			#keep track of invalidity
+	jal loopOne			#then, go back to loop
+
 exit:
     li $v0, 10		#to end the script
     syscall
