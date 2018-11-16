@@ -48,6 +48,11 @@ loopOne:
 	li $s4, 1			#load 1 to $s4 to keep track of invalidity
 	jal loopOne			#and loop again
 
+checkSpaceBetween:
+	li $t0, 0			#load 0 into $t0 to compare with value stored in $t7 to see whether space is valid to skip or not
+	bgt $t7, $t0, incrementSpaceInvalid	#if value in $t7 is greater than 0, then branch to incrementSpaceInvalid
+	jal loopOne			#else, go back to original loop (space character skipped)
+
 exit:
     li $v0, 10		#to end the script
     syscall
