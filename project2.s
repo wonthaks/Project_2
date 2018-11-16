@@ -176,6 +176,11 @@ calculateOutput:
 	li $t0, 32			#load 32 into $t0 to use to compare for space character
 	beq $t2, $t0, calculateOutput	#if $t2 contains a space character, go back to beginning of this loop
 	
+	li $t0, 97			#load 97 into $t7 to use to compare for valid character (uppercase)
+	bge $t2, $t0, calculateLowerCase	#branch to calculateLowerCase if  $t2 > $t0
+	li $t0, 65			#if previous statement did not execute, load 65 into $t0
+	bge $t2, $t0, calculateUpperCase	#branch to calculateUpperCase if  $t2 > $t0
+	
 exit:
     li $v0, 10		#to end the script
     syscall
