@@ -62,6 +62,10 @@ checkLength:
 	add $t8, $t8, $t4	#add invalid length to real length
 	li $t0, 4			#load 4 into $t0 to check for length of string
 	bgt $t8, $t0, handleLonger		#if length is longer than 4, branch to handleLonger
+	li $t0, 0			#load 0 into $t0 this time to check if string is empty
+	beq $t8, $t0, handleEmpty		#if string is empty, branch to handleEmpty
+	li $t0, 1			#load 1 into $t0 to check for invalidity
+	beq $s4, $t0, handleInvalid		#if string is invalid, jump to handleInvalid
 	
 exit:
     li $v0, 10		#to end the script
