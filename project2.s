@@ -10,6 +10,13 @@ main:
 	li $a1, 1000		#5 in $a1 to store 1000 bytes in buffer
 	syscall
 	
+	add $s0, $a0, $zero	#copy contents of $a0 to $s0
+	li $t9, 10			#load 10 into $t9 to use to check for Line Feed character
+	li $t8, 0			#load 0 to initialize length of string
+	li $t7, 0			#load 0 to use to check whether a space character is between the input string or not (0 indicates string has not started yet, while > 0 means the string has)
+	li $t6, 0			#$t6 will be used to calculate the output sum after
+	
+	
    add $t0, $a0, $zero	#copy contents of $a0 to $t0
    li $t1, 1			#load 1 into $t1 to use as program counter
    li $t8, 5			#load 5 into $t8 to use to check whether loop has eded
