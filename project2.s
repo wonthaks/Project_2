@@ -2,14 +2,14 @@
 	empty: .asciiz "Input is empty."
 	long: .asciiz "Input is too long."
 	invalid: .asciiz "Invalid base-N number."
-	buffer: .space 1000 #store 5 bytes to accomodate for end of character array
+	buffer: .space 1000 #store 1000 bytes to accomodate for end of character array
 .text
 main:
-   li $v0, 8		#load 8 in $v0 to read string input from user
-   la $a0, buffer	#load buffer into $a0
-   li $a1, 5		#5 in $a1 to store 5 bytes in buffer
-   syscall		
-
+	li $v0, 8		#load 8 in $v0 to read string input from user
+	la $a0, buffer	#load buffer into $a0
+	li $a1, 1000		#5 in $a1 to store 1000 bytes in buffer
+	syscall
+	
    add $t0, $a0, $zero	#copy contents of $a0 to $t0
    li $t1, 1			#load 1 into $t1 to use as program counter
    li $t8, 5			#load 5 into $t8 to use to check whether loop has eded
