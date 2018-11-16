@@ -53,6 +53,11 @@ checkSpaceBetween:
 	bgt $t7, $t0, incrementSpaceInvalid	#if value in $t7 is greater than 0, then branch to incrementSpaceInvalid
 	jal loopOne			#else, go back to original loop (space character skipped)
 
+incrementSpaceInvalid:
+	addi $s2, $s2, 1	#add 1 to invalid space length tracker
+	li $t3, 1			#load 1 into $t3 to keep track of whether the space was between characters
+	jal loopOne			#jump back to main loop
+	
 exit:
     li $v0, 10		#to end the script
     syscall
