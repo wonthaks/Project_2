@@ -1,5 +1,8 @@
 .data
-   buffer: .space 5 #store 5 bytes to accomodate for end of character array
+	empty: .asciiz "Input is empty."
+	long: .asciiz "Input is too long."
+	invalid: .asciiz "Invalid base-N number."
+	buffer: .space 1000 #store 5 bytes to accomodate for end of character array
 .text
 main:
    li $v0, 8		#load 8 in $v0 to read string input from user
